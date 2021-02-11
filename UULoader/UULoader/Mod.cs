@@ -67,7 +67,7 @@ namespace UULoader
             public UnityEngine.Object GetObject(string objectName)
             {
                 if (loadedAssets == null) throw new NullReferenceException("No assets loaded for bundle yet GetObject ran");
-                return loadedAssets.Single(a => a.name == objectName);
+                return loadedAssets.SingleOrDefault(a => a.name == objectName);
             }
 
             public bool Contains(string objectName)
@@ -85,7 +85,7 @@ namespace UULoader
         public Assembly GetAssemblyByName(string name)
         {
             if (assemblies == null) throw new NullReferenceException("No assemblies loaded yet GetAssemblyByName ran");
-            return assemblies.Single(s => s.assembly == name);
+            return assemblies.SingleOrDefault(s => s.assembly == name);
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace UULoader
         public Bundle GetBundleByName(string bundleName)
         {
             if (bundles == null) throw new NullReferenceException("No bundles loaded yet GetBundleByName ran");
-            return bundles.Single(s => s.bundle == bundleName);
+            return bundles.SingleOrDefault(s => s.bundle == bundleName);
         }
 
         /// <summary>

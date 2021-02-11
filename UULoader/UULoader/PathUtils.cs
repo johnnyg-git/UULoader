@@ -23,7 +23,7 @@ namespace UULoader
             Console.WriteLine($"Exe Path: {ExePath}");
             Console.WriteLine($"DLL Path: {DLLPath}");
             Console.WriteLine($"Managed Path: {ManagedPath}");
-            Console.WriteLine($"Mods Path: {ManagedPath}");
+            Console.WriteLine($"Mods Path: {ModsPath}");
         }
     }
 }

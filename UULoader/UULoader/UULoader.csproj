@@ -32,14 +32,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0Harmony">
-      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\Craft Keep VR\Craft Keep\Dependencies\0Harmony.dll</HintPath>
-    </Reference>
     <Reference Include="Mono.Cecil">
-      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\Craft Keep VR\Craft Keep\Dependencies\Mono.Cecil.dll</HintPath>
+      <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\Craft Keep VR\Craft Keep\UULoader\Mono.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="MonoMod.Common">
-      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\Craft Keep VR\Craft Keep\Dependencies\MonoMod.Common.dll</HintPath>
+      <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\Craft Keep VR\Craft Keep\UULoader\MonoMod.Common.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

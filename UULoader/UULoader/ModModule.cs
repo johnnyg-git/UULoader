@@ -8,6 +8,6 @@ namespace UULoader
 {
     public class ModModule : MonoBehaviour
     {
-        
+        public Mod mod;
     }
 }

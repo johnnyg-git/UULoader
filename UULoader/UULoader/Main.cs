@@ -16,15 +16,21 @@ namespace UULoader
 
         public static void Start()
         {
+            AppDomain.CurrentDomain.AssemblyResolve += Bootstrap.ResolveAssembly;
             ConsoleManager.CreateConsole(true);
+            if (IntPtr.Size == 8)
+                Debug.Log("UNITY-WINDOWS64");
+            else
+                Debug.Log("UNITY-WINDOWS");
             PathUtils.FindPaths();
+
             LoadMods();
         }
 
         public static Mod GetModByName(string name)
         {
             if (mods == null) throw new NullReferenceException("No mods loaded yet GetModByName ran");
-            return mods.Single(s => s.name == name);
+            return mods.SingleOrDefault(s => s.name == name);
         }
 
         public static Mod.Bundle GetBundle(string bundleName)
@@ -83,15 +89,15 @@ namespace UULoader
             {
                 foreach (var assembly in mod.assemblies)
                 {
+                    bool found = false;
                     foreach (var file in Directory.GetFiles(mod.modPath, assembly.assembly))
                     {
                         assembly.loadedAssembly = Assembly.LoadFile(file);
                         Debug.Log($"{assembly.loadedAssembly.FullName} has been loaded for {mod.name}");
-                        goto Continue;
+                        found = true;
                     }
-
-                    Debug.Log($"Could not find assembly {assembly} for {mod.name}");
-                    Continue: continue;
+                    if(!found)
+                        Debug.Log($"Could not find assembly {assembly} for {mod.name}");
                 }
             }
         }
@@ -105,6 +111,7 @@ namespace UULoader
                     bundle.loadedAssets = new List<Object>();
                     foreach (var file in Directory.GetFiles(mod.modPath, bundle.bundle))
                     {
+                        Debug.Log(file);
                         bundle.loadedBundle = AssetBundle.LoadFromFile(file);
                         Debug.Log($"{bundle.bundle} has been loaded for {mod.name}");
                         foreach (var asset in bundle.assets)
